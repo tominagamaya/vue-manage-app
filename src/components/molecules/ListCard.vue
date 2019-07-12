@@ -9,23 +9,11 @@
           <th>URL</th>
           <th>滞在時間</th>
         </tr>
-        <tr>
-          <td>2019-07-01</td>
-          <td>mogumogu blog</td>
-          <td>/mogumogu/home</td>
-          <td>3:20</td>
-        </tr>
-        <tr>
-          <td>2019-07-02</td>
-          <td>mogumogu blog</td>
-          <td>/mogumogu/home</td>
-          <td>5:12</td>
-        </tr>
-        <tr>
-          <td>2019-07-03</td>
-          <td>mogumogu blog</td>
-          <td>/mogumogu/home</td>
-          <td>1:01</td>
+        <tr v-for="value in this.dataList" :key="value.id">
+          <td>{{ value.date }}</td>
+          <td>{{ value.title }}</td>
+          <td>{{ value.url }}</td>
+          <td>{{ value.time }}</td>
         </tr>
       </table>
     </div>
@@ -40,6 +28,86 @@ export default {
   props: {
     name: String,
     values: Array
+  },
+  created() {
+    // TODO: get data from server
+    this.dataList = [
+      {
+        id: 1,
+        date: "2019-07-01",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "1:20"
+      },
+      {
+        id: 2,
+        date: "2019-07-02",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "2:21"
+      },
+      {
+        id: 3,
+        date: "2019-07-03",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "3:23"
+      },
+      {
+        id: 4,
+        date: "2019-07-04",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "4:01"
+      },
+      {
+        id: 5,
+        date: "2019-07-05",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "5:02"
+      },
+      {
+        id: 6,
+        date: "2019-07-06",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "6:03"
+      },
+      {
+        id: 7,
+        date: "2019-07-07",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "7:01"
+      },
+      {
+        id: 8,
+        date: "2019-07-08",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "0:20"
+      },
+      {
+        id: 9,
+        date: "2019-07-09",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "1:01"
+      },
+      {
+        id: 10,
+        date: "2019-07-10",
+        title: "mogumogu blog",
+        url: "/mogumogu/home",
+        time: "2:20"
+      }
+    ];
+  },
+  data() {
+    return {
+      dataList: []
+    };
   }
 };
 </script>
