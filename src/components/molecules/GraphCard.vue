@@ -15,7 +15,9 @@ export default {
   props: {
     name: String,
     data: Array,
-    label: Array
+    label: Array,
+    min: { type: Number, default: 0 },
+    max: Number
   },
   data() {
     return {
@@ -46,8 +48,8 @@ export default {
           yAxes: [
             {
               ticks: {
-                min: 200,
-                max: 600,
+                min: this.min,
+                max: this.max,
                 stepSize: 100
               }
             }

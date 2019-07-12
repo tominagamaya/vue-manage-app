@@ -2,9 +2,9 @@
   <nav class="nav-header">
     <ul class="nav-header__menu">
       <app-logo value="Web Analysis"></app-logo>
-      <li class="current"><a href="#">ホーム</a></li>
-      <li><a href="#">月毎</a></li>
-      <li><a href="#">日毎</a></li>
+      <li :class="setActive('home')"><a href="/">ホーム</a></li>
+      <li :class="setActive('monthly')"><a href="/monthly">月毎</a></li>
+      <li :class="setActive('daily')"><a href="/daily">日毎</a></li>
       <login-link value="admin"></login-link>
     </ul>
   </nav>  
@@ -16,6 +16,14 @@ export default {
   components: {
     AppLogo,
     LoginLink
+  },
+  props: {
+    baseName: String
+  },
+  methods: {
+    setActive(item) {
+      return this.baseName === item ? "current" : "";
+    }
   }
 };
 </script>

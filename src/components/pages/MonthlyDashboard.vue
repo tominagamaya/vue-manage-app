@@ -1,13 +1,13 @@
 <template>
   <div>
-    <navbar baseName="home"></navbar>
+    <navbar baseName="monthly"></navbar>
     <sidebar></sidebar>
     <div class="top">
       <div>
-        <value-card name="ユーザー数 合計" value="256"></value-card>
-        <value-card name="プレビュー数 合計" value="21,234"></value-card>
+        <value-card name="ユーザー数 合計" value="2,235"></value-card>
+        <value-card name="プレビュー数 合計" value="101,234"></value-card>
       </div>
-      <graph-card name="ユーザー数 推移" :data="getUserData" :label="getLabelList"  :min="200" :max="600"></graph-card>
+      <graph-card name="ユーザー数 推移" :data="getUserData" :label="getLabelList" :min="200" :max="600"></graph-card>
       <graph-card name="プレビュー数 推移" :data="getPreviewData" :label="getLabelList"  :min="200" :max="600"></graph-card>
       <list-card name="データ一覧"></list-card>
     </div>
@@ -29,34 +29,28 @@ export default {
   },
   data() {
     return {
-      daysNum: 0
+      monthNum: 13
     };
   },
-  created() {
-    this.daysNum = this.getDays;
-  },
   computed: {
-    getDays() {
-      const date = new Date();
-      return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    },
     getUserData() {
       // TODO: fix getting from server data
-      return [...Array(this.daysNum)].map(
+      return [...Array(this.monthNum)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
     },
     getLabelList() {
       const date = new Date();
-      date.setDate(0);
-      return [...Array(this.daysNum)].map(() => {
-        date.setDate(date.getDate() + 1);
-        return date.toLocaleDateString();
+      date.setMonth(date.getMonth() - 12);
+      return [...Array(this.monthNum)].map(() => {
+        date.setMonth(date.getMonth() + 1);
+        const month = date.getMonth() === 0 ? 12 : date.getMonth();
+        return date.getFullYear() + "/" + month;
       });
     },
     getPreviewData() {
       // TODO: fix getting from server data
-      return [...Array(this.daysNum)].map(
+      return [...Array(this.monthNum)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
     }
