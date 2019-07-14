@@ -48,6 +48,7 @@ export default {
   background-color: #3373d3;
   margin: 0;
   padding: 15px 0 0 0;
+  user-select: none;
 
   & li a {
     color: white;

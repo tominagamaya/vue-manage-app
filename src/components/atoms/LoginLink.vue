@@ -21,6 +21,7 @@ export default {
   right: 0;
   border-left: 2px solid #ddd;
   height: 27px;
+  user-select: none;
 
   &__content {
     box-shadow: 0 5px 3px -3px #ddd;

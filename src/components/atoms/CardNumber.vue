@@ -11,5 +11,6 @@ export default {
   text-align: center;
   margin-top: 30px;
   font-size: 40px;
+  user-select: none;
 }
 </style>

@@ -122,6 +122,7 @@ export default {
   border-radius: 4px;
   box-shadow: 2px 2px 2px 2px #ccc;
   padding: 15px;
+  user-select: none;
 }
 .list-table {
   padding: 10px 0;

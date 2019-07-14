@@ -1,7 +1,7 @@
 <template>
   <div class="graph">
     <card-title :value="name"></card-title>
-    <line-chart class="chart" :data="getChartData()" :options="getOptions()" :height="270" :width="770"></line-chart>
+    <line-chart class="chart" :chartData="getChartData()" :options="getOptions()" :height="270" :width="770"></line-chart>
   </div>
 </template>
 <script>

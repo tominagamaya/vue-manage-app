@@ -13,5 +13,6 @@ export default {
   color: grey;
   padding-bottom: 3px;
   border-bottom: solid 2px #3280f57e;
+  user-select: none;
 }
 </style>

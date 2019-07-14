@@ -34,6 +34,7 @@ export default {
   background-color: white;
   position: fixed;
   width: 100%;
+  user-select: none;
 }
 .nav-header__menu {
   padding: 20px 0;
