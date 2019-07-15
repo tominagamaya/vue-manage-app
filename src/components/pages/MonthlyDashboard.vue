@@ -4,12 +4,11 @@
     <sidebar></sidebar>
     <div class="top">
       <div>
-        <value-card name="ユーザー数 合計" value="2,235"></value-card>
-        <value-card name="プレビュー数 合計" value="101,234"></value-card>
+        <value-card name="ユーザー数 合計" :value="userTotal"></value-card>
+        <value-card name="プレビュー数 合計" :value="previewTotal"></value-card>
       </div>
-      <graph-card name="ユーザー数 推移" :data="getUserData" :label="getLabelList" :min="200" :max="600"></graph-card>
-      <graph-card name="プレビュー数 推移" :data="getPreviewData" :label="getLabelList"  :min="200" :max="600"></graph-card>
-      <list-card name="データ一覧"></list-card>
+      <graph-card name="ユーザー数 推移" :data="userData" :label="getLabelList" :min="200" :max="600"></graph-card>
+      <graph-card name="プレビュー数 推移" :data="previewData" :label="getLabelList"  :min="200" :max="600"></graph-card>
     </div>
   </div>
 </template>
@@ -29,8 +28,14 @@ export default {
   },
   data() {
     return {
-      monthNum: 13
+      monthNum: 13,
+      userData: [],
+      previewData: []
     };
+  },
+  created() {
+    this.userData = this.getUserData;
+    this.previewData = this.getPreviewData;
   },
   computed: {
     getUserData() {
@@ -38,6 +43,9 @@ export default {
       return [...Array(this.monthNum)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
+    },
+    userTotal() {
+      return this.userData.reduce((prev, current) => prev + current);
     },
     getLabelList() {
       const date = new Date();
@@ -53,6 +61,9 @@ export default {
       return [...Array(this.monthNum)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
+    },
+    previewTotal() {
+      return this.previewData.reduce((prev, current) => prev + current);
     }
   }
 };

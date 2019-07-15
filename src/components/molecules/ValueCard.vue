@@ -1,7 +1,7 @@
 <template>
   <div class="value-content">
     <card-title :value="name"></card-title>
-    <card-number :value="value"></card-number>
+    <card-number :value="value.toLocaleString()"></card-number>
   </div>
 </template>
 <script>
@@ -14,7 +14,7 @@ export default {
   },
   props: {
     name: String,
-    value: String
+    value: Number
   }
 };
 </script>

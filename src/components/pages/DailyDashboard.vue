@@ -1,15 +1,14 @@
 <template>
   <div>
-    <navbar baseName="monthly"></navbar>
+    <navbar baseName="daily"></navbar>
     <sidebar></sidebar>
     <div class="top">
       <div>
-        <value-card name="ユーザー数 合計" value="25"></value-card>
-        <value-card name="プレビュー数 合計" value="134"></value-card>
+        <value-card name="ユーザー数 合計" :value="userTotal"></value-card>
+        <value-card name="プレビュー数 合計" :value="previewTotal"></value-card>
       </div>
       <graph-card name="ユーザー数 推移" :data="getUserData" :label="getLabelList"></graph-card>
       <graph-card name="プレビュー数 推移" :data="getPreviewData" :label="getLabelList"></graph-card>
-      <list-card name="データ一覧"></list-card>
     </div>
   </div>
 </template>
@@ -29,8 +28,14 @@ export default {
   },
   data() {
     return {
-      hourNum: 13
+      hourNum: 13,
+      userData: [],
+      previewData: []
     };
+  },
+  created() {
+    this.userData = this.getUserData;
+    this.previewData = this.getPreviewData;
   },
   computed: {
     getUserData() {
@@ -53,6 +58,12 @@ export default {
       return [...Array(this.hourNum)].map(() =>
         Math.floor(Math.random() * Math.floor(50))
       );
+    },
+    userTotal() {
+      return this.userData.reduce((prev, current) => prev + current);
+    },
+    previewTotal() {
+      return this.previewData.reduce((prev, current) => prev + current);
     }
   }
 };

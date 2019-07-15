@@ -5,8 +5,8 @@
     <div class="top">
       <div>
         <select-month @date="setMonthData"></select-month>
-        <value-card name="ユーザー数 合計" value="256"></value-card>
-        <value-card name="プレビュー数 合計" value="21,234"></value-card>
+        <value-card name="ユーザー数 合計" :value="userTotal"></value-card>
+        <value-card name="プレビュー数 合計" :value="previewTotal"></value-card>
       </div>
       <graph-card name="ユーザー数 推移" :data="userData" :label="labelData" :min="200" :max="600"></graph-card>
       <graph-card name="プレビュー数 推移" :data="previewData" :label="labelData"  :min="200" :max="600"></graph-card>
@@ -48,11 +48,17 @@ export default {
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
     },
+    userTotal() {
+      return this.userData.reduce((prev, current) => prev + current);
+    },
     getPreviewData() {
       // TODO: fix getting from server data
       return [...Array(this.daysNum)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
+    },
+    previewTotal() {
+      return this.previewData.reduce((prev, current) => prev + current);
     }
   },
   methods: {
