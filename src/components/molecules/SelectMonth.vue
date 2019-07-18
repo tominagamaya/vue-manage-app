@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="select-date">
-      <a class="arrow back" @click="beforeMonth()"></a>
+      <a class="arrow back" @click="beforeMonth"></a>
       <div class="month">{{ dispDate }}</div>
       <a class="arrow next" @click="afterMonth"></a>
     </div>

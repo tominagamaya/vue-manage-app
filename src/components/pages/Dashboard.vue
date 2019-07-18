@@ -42,14 +42,19 @@ export default {
     this.setMonthData(new Date());
   },
   computed: {
+    userTotal() {
+      return this.userData.reduce((prev, current) => prev + current);
+    },
+    previewTotal() {
+      return this.previewData.reduce((prev, current) => prev + current);
+    }
+  },
+  methods: {
     getUserData() {
       // TODO: fix getting from server data
       return [...Array(this.daysNum)].map(
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
-    },
-    userTotal() {
-      return this.userData.reduce((prev, current) => prev + current);
     },
     getPreviewData() {
       // TODO: fix getting from server data
@@ -57,11 +62,6 @@ export default {
         () => 300 + Math.floor(Math.random() * Math.floor(500 - 300))
       );
     },
-    previewTotal() {
-      return this.previewData.reduce((prev, current) => prev + current);
-    }
-  },
-  methods: {
     getDays(date) {
       return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     },
@@ -74,8 +74,8 @@ export default {
     },
     setMonthData(date) {
       this.daysNum = this.getDays(date);
-      this.userData = this.getUserData;
-      this.previewData = this.getPreviewData;
+      this.userData = this.getUserData();
+      this.previewData = this.getPreviewData();
       this.labelData = this.getLabelList(date);
     }
   }
